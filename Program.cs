@@ -1,6 +1,6 @@
 ﻿try
 {
-  Menu.Show();
+  MenuView.Show();
 }
 catch (Exception e)
 {

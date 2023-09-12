@@ -1,20 +1,27 @@
 
 
-static class Menu
+static class MenuView
 {
   public static void Show()
   {
     Welcome();
-    MainMenu();
-    GetOption();
+    Menu();
   }
 
   private static void GetOption()
   {
     TextUtils.TextDivider();
     Console.Write("Option: ");
-    int option = int.Parse(Console.ReadLine());
-    HandleOption(option);
+    try
+    {
+      int option = int.Parse(Console.ReadLine());
+      HandleOption(option);
+    }
+    catch (Exception e)
+    {
+      TextUtils.Error($"{e.Message}");
+      Menu();
+    }
   }
 
   private static void HandleOption(int option)
@@ -22,7 +29,7 @@ static class Menu
     switch (option)
     {
       case 1:
-        TextUtils.Title("\tLet's play");
+        PlayView.Play();
         break;
       case 2:
         TextUtils.Title("\tThank you");
@@ -41,11 +48,13 @@ static class Menu
     TextUtils.TextDivider();
   }
 
-  private static void MainMenu()
+  private static void Menu()
   {
     foreach(var option in MenuUtils.MenuOptions)
     {
-      Console.WriteLine($"{option.Key}. {option.Value}");
+      Console.WriteLine($"{option.Key} - {option.Value}");
     }
+
+    GetOption();
   }
 }
