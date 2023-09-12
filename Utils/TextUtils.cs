@@ -27,4 +27,12 @@ static class TextUtils
     Console.WriteLine(text);
     Console.ForegroundColor = defaultColor;
   }
+
+  public static void Warning(string text)
+  {
+    var defaultColor = Console.ForegroundColor;
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine(text);
+    Console.ForegroundColor = defaultColor;
+  }
 }
