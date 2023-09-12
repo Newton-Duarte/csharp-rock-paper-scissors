@@ -35,17 +35,17 @@ static class PlayView
       case 1:
         string machineOption = PlayUtils.GetRandomOption();
         string result = GetResult("Rock", machineOption);
-        TextUtils.Success($"Your chose: Rock x {machineOption} - {result}");
+        ResultMessage("Rock", machineOption, result);
         break;
       case 2:
         string machineOption2 = PlayUtils.GetRandomOption();
         string result2 = GetResult("Paper", machineOption2);
-        TextUtils.Success($"Your chose: Paper x {machineOption2} - {result2}");
+        ResultMessage("Paper", machineOption2, result2);
         break;
       case 3:
         string machineOption3 = PlayUtils.GetRandomOption();
         string result3 = GetResult("Scissors", machineOption3);
-        TextUtils.Success($"Your chose: Scissors x {machineOption3} - {result3}");
+        ResultMessage("Scissors", machineOption3, result3);
         break;
       default:
         TextUtils.Error("Invalid option");
@@ -94,6 +94,20 @@ static class PlayView
     }
     else {
       return "";
+    }
+  }
+
+  private static void ResultMessage(string userOption, string machineOption, string result)
+  {
+    if (result.Contains("win"))
+    {
+      TextUtils.Success($"Your chose: {userOption} x {machineOption} - {result}");
+    } else if (result.Contains("lose"))
+    {
+      TextUtils.Error($"Your chose: {userOption} x {machineOption} - {result}");
+    }
+    else {
+      TextUtils.Warning($"Your chose: {userOption} x {machineOption} - {result}");
     }
   }
 }
