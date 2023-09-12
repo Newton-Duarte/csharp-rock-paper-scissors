@@ -20,6 +20,7 @@ static class PlayView
     {
       int option = int.Parse(Console.ReadLine());
       HandleOption(option);
+      MenuView.Show();
     }
     catch (Exception e)
     {
